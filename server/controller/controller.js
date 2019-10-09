@@ -1,23 +1,21 @@
-const mongoose = require('mongoose');
 const Event = require('./../model/model.js')
-const cheerio = require('cheerio');
-const request = require('request');
 
 let eventController = {
     create: (req,res) => {
-        // console.log(req.body, 'this is the body!!')
+        console.log("Hit")
+        console.log(req.body, 'this is the body!!')
         Event.find({created: req.body.created, creat: req.body.creat}, (err,data) => {
             // console.log('this is data ', data)
             if(err){return res.send('cant rewrite your old schedule from here')}
             if(data.length){
-                Event.findOneAndUpdate({created: req.body.created, creat: req.body.creat},{summary: req.body.summary},(err, result) => {
+                Event.findOneAndUpdate({created: req.body.created, creat: req.body.creat},{activities: req.body.activities},(err, result) => {
                     if(err){res.status(404)}
                     else{res.send(result)}
                 })
             }
             else{
                 let today = Event({ 
-                    'summary' : req.body.summary,
+                    'activities' : req.body.activities,
                     'created' : req.body.created,
                     'creat' : req.body.creat,
                     'identifier' : req.body.identifier
@@ -38,7 +36,7 @@ let eventController = {
     patch: (req,res) => {
         // console.log('this is req,', req.body)
         console.log('this is reqparam,', req.params)
-        Event.findOneAndUpdate({identifier: req.params.identifier},{summary: req.body.summary}, (err, result) => {
+        Event.findOneAndUpdate({identifier: req.params.identifier},{activities: req.body.activities}, (err, result) => {
             if(err){res.status(404)}
             else{res.send(result)}
         })
@@ -50,7 +48,6 @@ let eventController = {
                 res.send(data)
             }
         });
-        // Event.remove({ identifier : req.params.identifier }, (data) => console.log('this is the delete data: ', data))        
     },
 }
 

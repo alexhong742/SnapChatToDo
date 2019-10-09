@@ -4,7 +4,7 @@ const app = express();
 const path = require('path');
 const mongoose = require('mongoose');
 const bodyParse = require('body-parser');
-const eventCtrl = require('./controller/controller.js.js');
+const eventCtrl = require('./controller/controller.js');
 
 const port = process.env.PORT || 3000;
 
