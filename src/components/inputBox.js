@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
+import axios from 'axios';
 
 class InputBox extends Component {
   state = {
@@ -10,6 +11,10 @@ class InputBox extends Component {
   };
   handleClick = (e) => {
     this.props.updateList(this.state.text)
+    e.preventDefault()
+    let data = {summary:this.state.text, created: this.props.date, creat: this.props.months, identifier: `${this.props.months}, ${this.props.date}`}
+    axios.post("/", data)
+    .then(() => this.props.handlerC());
 }
 
   render() {
