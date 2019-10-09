@@ -7,13 +7,12 @@ class ListOfActivities extends Component{
     }
 
     handleS = (e) => {
-      this.setState({text:e.target.value}) 
+      this.setState({text:e.target.value});
     }
 
     delete = () => {
       axios.delete(`/${this.props.listOfActivies[this.props.number].creat}, ${this.props.listOfActivies[this.props.number].created}`)
       .then(() => {
-        // console.log('deleted')
         this.props.refresh();
       });
     };
@@ -26,7 +25,6 @@ class ListOfActivities extends Component{
     }
 
     render() {
-      console.log("this:" , this.props.listOfActivies[this.props.number])
       return(
       <div style={{textAlign: 'center', alignSelf: 'stretch'}}>
         {this.props.listOfActivies[this.props.number].creat}, {this.props.listOfActivies[this.props.number].created}: 
@@ -44,4 +42,5 @@ class ListOfActivities extends Component{
         );
     }
 }
+
 export default ListOfActivities;

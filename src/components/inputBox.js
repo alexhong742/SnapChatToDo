@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import axios from 'axios'
+
 class InputBox extends Component{
     state = {
         text: this.props.text,
@@ -26,4 +27,5 @@ class InputBox extends Component{
         );
     }
 }
+
 export default InputBox;

@@ -5,12 +5,12 @@ import Head from "./Header.js"
 class Months extends Component{
 
     render(){  
-      let month = []
-      let header = ['Sunday','Monday', 'Tueday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+      let month = [];
+      let header = ['Sunday','Monday', 'Tueday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
       for(let i = 1; i < 5; i++){
         let weeks = <Weeks key={`Week${i}`} days={this.props.days} weekNumber={i} rowID={i} textHandler={this.props.textHandler} text={this.props.text} 
           edittor={this.props.edittor} summaries={this.props.summaries} handlerC={this.props.handlerC} months={this.props.months}/>
-        month.push(weeks)
+        month.push(weeks);
         }
       return(
         <div className="month">
