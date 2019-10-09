@@ -1,35 +1,24 @@
-import React, { Component } from "react";
-
-class ListOfActivities extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      list: props.listOfActivities
-    };
-  }
-
-  handleChange = e => {
-    
-  };
-
-  render() {
-    console.log("this.state.list[1]: ", this.state.list);
-
-    let container = this.state.list.map((element, index) => {
-        console.log("element: ", element)
-        console.log("index: ", index)
-      return <div key={index}>{element}</div>;
-    });
-    return (
-        <div>{container}</div>
-    )
-  }
+import React, {Component} from 'react'
+import ReactDOM from 'react-dom'
+import axios from 'axios'
+import App from './App.js'
+class ListOfActivities extends Component{
+    state = {text: ""}
+    handleS = (e) => {
+      this.setState({text:e.target.value}) 
+    }
+    render() {
+      return(
+      <p style={{textAlign: 'center', alignSelf: 'stretch'}}> {this.props.sum[this.props.number].creat}, {this.props.sum[this.props.number].created}: <br/> 
+      {this.props.sum[this.props.number].summary.toString()}<br/>
+      <form style={{margin:'auto',padding:'auto',fontColor:'#EDF2F4'}}>
+      <textarea type='text' name='event' placeholder='edit' value={this.state.text} onChange={this.handleS} 
+      style={{color:'#EDF2F4', backgroundColor:'#014258', margin:'auto', height:'40px'}}/>
+      <br/>
+      </form>
+      
+       </p>
+        );
+    }
 }
-
-// const style = {
-//   container: {
-//     border: 1px solid black;
-//   }
-// }
-
 export default ListOfActivities;

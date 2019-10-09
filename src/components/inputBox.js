@@ -8,6 +8,9 @@ class InputBox extends Component {
   handleChange = e => {
     this.setState({ text: e.target.value });
   };
+  handleClick = (e) => {
+    this.props.updateList(this.state.text)
+}
 
   render() {
     return (
@@ -17,7 +20,7 @@ class InputBox extends Component {
           value={this.state.text}
           onChange={this.handleChange}
         />
-        <button onClick={this.props.updateList}>update</button>
+        <button onClick={this.handleClick}>update</button>
       </div>
     );
   }
