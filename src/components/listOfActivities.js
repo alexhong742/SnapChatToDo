@@ -1,26 +1,35 @@
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
 
-class InputBox extends Component {
-  state = {
-    text: this.props.text
-  };
+class ListOfActivities extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      list: props.listOfActivities
+    };
+  }
+
   handleChange = e => {
-    this.setState({ text: e.target.value });
+    
   };
 
   render() {
+    console.log("this.state.list[1]: ", this.state.list);
+
+    let container = this.state.list.map((element, index) => {
+        console.log("element: ", element)
+        console.log("index: ", index)
+      return <div key={index}>{element}</div>;
+    });
     return (
-      <div>
-        <textarea
-          type="text"
-          value={this.state.text}
-          onChange={this.handleChange}
-        />
-        <button onClick={this.props.updateList}>update</button>
-      </div>
-    );
+        <div>{container}</div>
+    )
   }
 }
 
-export default InputBox;
+// const style = {
+//   container: {
+//     border: 1px solid black;
+//   }
+// }
+
+export default ListOfActivities;
